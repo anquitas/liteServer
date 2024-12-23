@@ -1,0 +1,25 @@
+{
+  "name": "liteserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sqams": "sequelize-auto -h localhost -d deneme -u yeni -x calis -p 1433 --dialect mssql -o './models'",
+    "sqalt": "npx sequelize-auto -o ./models -d ./data/database.sqlite -h localhost -e sqlite -x  -p 3306 -l esm",
+    "nmon": "nodemon ./server.js"
+  },
+  "keywords": [],
+  "author": "anquitas",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9",
+    "sequelize": "^6.37.5",
+    "sequelize-auto": "^0.8.8",
+    "sqlite3": "^5.1.7"
+  },
+  "type": "module"
+}
