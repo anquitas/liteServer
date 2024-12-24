@@ -17,20 +17,50 @@ const iletisim = db.geribildirim // düzelt
 
 // ## MW MOUNTS --- --- ---
 
-router.post(
-  '/',
+
+// ## GET: '/'
+router.get(
+  '/:id',
   async (req, res) => {
     // logla
-    console.log('bok iletişim kurarsın')
+    console.log('bok işletme')
     // bilgi çıkar
-    const {isim, soyisim, eposta, mesaj} = req.body
+    const id = req.query.id
     // insert nesnesi oluştur
     const iletisim = {isim, soyisim, eposta, mesaj}
     // insert yap
     iletisim.create(iletisim)
   }
-
 )
+
+// ## GET: '?isletme&kategori'
+router.get(
+  '/',
+  async () => {
+    const {isletme, kategori} = req.query
+    const kosullar = {}
+
+    if (isletme) kosullar.isletme = isletme
+    if (kategori) kosullar.kategori = kategori
+
+    const user = await kullanici.findOne({ where: { eposta: eposta } });
+
+
+
+  }
+)
+
+// ## GET: '?search'
+router.get(
+  '/search',
+  (req, res) => {
+    // get search term
+    const serchT = req.query.search
+    // make search
+  }
+)
+
+
 
 // ## TESTS --- --- ---
 

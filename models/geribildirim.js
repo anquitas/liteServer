@@ -12,11 +12,23 @@ export default class geribildirim extends Model {
     },
     kullanici_id: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: 'kullanici',
+        key: 'id'
+      }
     },
-    isletme_id: {
+    konu_id: {
       type: DataTypes.INTEGER,
       allowNull: false
+    },
+    kategori_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'kategori',
+        key: 'id'
+      }
     },
     baslik: {
       type: DataTypes.STRING(256),
@@ -27,15 +39,19 @@ export default class geribildirim extends Model {
       allowNull: false
     },
     post_tarih: {
-      type: DataTypes.STRING(30),
-      allowNull: true
+      type: DataTypes.DATE,
+      allowNull: false
     },
     yayin_tarih: {
-      type: DataTypes.STRING(30),
-      allowNull: true
+      type: DataTypes.DATE,
+      allowNull: false
     },
     cevaplama_tarih: {
-      type: DataTypes.STRING(30),
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    donut: {
+      type: DataTypes.INTEGER,
       allowNull: true
     }
   }, {

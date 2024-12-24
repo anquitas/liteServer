@@ -1,11 +1,16 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class kullanici_iletisim extends Model {
+export default class yorum extends Model {
   static init(sequelize, DataTypes) {
   return super.init({
-    kullanici_id: {
+    id: {
       autoIncrement: true,
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      primaryKey: true
+    },
+    kullanici_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
@@ -13,17 +18,21 @@ export default class kullanici_iletisim extends Model {
         key: 'id'
       }
     },
-    telefon: {
-      type: DataTypes.STRING(12),
-      allowNull: true
+    geribildirim_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'geribildirim',
+        key: 'id'
+      }
     },
-    adres: {
+    yorum: {
       type: DataTypes.TEXT,
-      allowNull: true
+      allowNull: false
     }
   }, {
     sequelize,
-    tableName: 'kullanici_iletisim',
+    tableName: 'yorum',
     timestamps: false
   });
   }

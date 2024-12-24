@@ -22,7 +22,7 @@ FROM kategori ka
 JOIN konu ko
 	ON ka.id = ko.kategori_id;
 
-	
+
 
 -- ## bir konuya ait şikayet sayısı
 DROP VIEW IF EXISTS 
@@ -30,7 +30,6 @@ SELECT *
 FROM geribildirim ge
 JOIN konu ko
 	ON ge.
-
 
 
 

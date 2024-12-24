@@ -5,6 +5,7 @@ export default class kullanici_meta extends Model {
   static init(sequelize, DataTypes) {
   return super.init({
     kullanici_id: {
+      autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {

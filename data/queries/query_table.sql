@@ -51,10 +51,19 @@ CREATE TABLE konu (
 	FOREIGN KEY (isletme_id) REFERENCES isletme(id)
 );
 
+
+DROP TABLE IF EXISTS nn_isletme_konu;
+CREATE TABLE nn_isletme_konu (
+	isletme_id INTEGER NOT NULL,
+	konu_id INTEGER NOT NULL,
+	PRIMARY KEY (isletme_id, konu_id) -- Composite Primary Key
+);
+
+
 DROP TABLE IF EXISTS kategori;
-CREATE TABLE kategori  (
+CREATE TABLE kategori (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	isim VARCHAR(30) NOT NULL,
+	isim VARCHAR(30) NOT NULL
 );
 
 DROP TABLE IF EXISTS alan;
@@ -80,9 +89,9 @@ CREATE TABLE geribildirim (  -- ASİL
 	cevaplama_tarih DATETIME NOT NULL,
 	donut INTEGER CHECK (donut BETWEEN 1 AND 5),
 	FOREIGN KEY (kullanici_id) REFERENCES kullanici(id),
-	FOREIGN KEY (isletme_id) REFERENCES isletme(id),
-	FOREIGN KEY (kategori_id) REFERENCES kategori(id),	
+	FOREIGN KEY (kategori_id) REFERENCES kategori(id)
 );
+
 
 DROP TABLE IF EXISTS yorum;
 CREATE TABLE yorum (
